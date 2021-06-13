@@ -1,0 +1,70 @@
+Otomasyon sistemlerinde uc önemli özellik vardir
+1- Veriye ulasilan yer. Burada sorgular vasitasi ele verile ulasip islemler yapariz. Bu katmana
+Data Access(veri erisim) katmani diyoruz. Burada veriye erisimin disinda asla baska bir kod yazilmaz.
+2- Business (Is kurallarini yazdigimiz yerdir)
+3- Arayuz (Kullanici ile iletisim kurulan yer- API ler) Bu API katmaninda da dis dunya ile nasil bir iliskin
+kurulacak sadece o yaziliyor. API katmani bunlarla iliski kurar(Android, IOS, React, Swing vs)
+
+Bir de yardimci katmanlarimiz var.
+ENTITIES. Entity varliklarimiz anlamina gelir. Bunlar veri tabanindaki varliklarin karsiligi olabilir.
+Uygulamalarimizdaki özellik tutan nesnelerimizi entities icine yaziyoruz(Product, Customer gibi)
+
+---
+Urunu Data Access ekler.
+Business urun eklenebilir mi diye kontrol eder.
+API urun listesini dis dunyaya sunar veya kullanicidan urun ister
+
+Data Access, Business, ve API katmanlari entities i kullanirlar. Yani tum sisteme hizmet eden nesnelerimizi
+entities icine yazariz.
+
+Bir diger yardimci katmanimizi adi ise:
+
+CORE dir. Her zaman her yerde kullanilabilen kodlar buraya yazilir.
+Tum sistemimizde kullanabilecegimiz ve ayni zamanda yeni projelerimizde kullanabilecegimiz kodlari icerir.
+Core katmani genellikle Ortak Katman, Commen, core gibi bir isimlendirme ile kullanilir.
+Buna örnek olarak mail göndermeyi verebiliriz
+
+concretes ler is yapan gercek siniflar (entities disinda). Concretes deyince isi yapan sinif akla gelmeli.
+
+Eger bir class bir inheritance ya da implementtion almiyorsa ilerde sorun yasanir. Yani bir class ciplak olamaz.
+Cunku bu sinif ile sinirlamalar getirildiginde problemler yasanir.
+
+interface'lerin icinde mutlaka birsey olmasi gerekmez.Cunku interface'ler referans tutuculardir.
+
+Classlarin olusturulma sirasi:
+1 - Product
+2 - Entity
+
+3 - HibernateProductDao
+4 - ProductDao
+
+5 - ProductService
+6 - ProductManager
+
+
+
+dataAccess.concretes olusturulurken önce Entity'nin ismini öne yazariz(Product) ve sonra da Dao yaziyoriz.
+Yani ProductDao ( bunun icersinde veriye erisim kodlarni yazariz )
+DAO - Data Access Object - Veri Erişim Nesnesi.
+
+Is sinifi interface'lerimizi Service olarak veriyoruz. Eger Service görursek is sinifinin interfacesidir.
+
+Bir projede Entiy'ler haric new'liyorsaniz problem yasarsiniz
+
+
+dizilere ekleme yaparken hata aliriz. Bunun yerine ArrayList'ler kullanirlir. Istedigimiz kadar ekleyebiliriz
+Buna generik denir
+
+ArrayList<Integer> sayi=new ArrayList<>();
+        sayi.add(2);
+        sayi.add(4);
+
+        List<Integer> cc = new ArrayList<>();
+        cc.add(5);
+        cc.add(8);
+        cc.add(10);
+
+        for (Integer d : cc) {
+            System.out.println(d);
+
+        }
